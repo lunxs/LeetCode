@@ -94,9 +94,14 @@ public class Java1Demo {
         System.out.println(8);
     }
 
+    public static void test7() {
+        int a = 25;
+        System.out.println(a * 1.0 / 100);
+    }
+
     public static void main(String[] args) {
 //        test5();
-        test6();
+        test7();
     }
 
 
