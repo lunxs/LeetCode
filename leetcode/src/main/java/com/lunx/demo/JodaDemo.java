@@ -13,5 +13,9 @@ import org.joda.time.LocalDate;
 public class JodaDemo {
 
     public static void main(String[] args) {
+        LocalDate now = LocalDate.now();
+        System.out.println(now);
+
+        System.out.println(now.minusDays(1));
     }
 }
