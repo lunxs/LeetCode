@@ -40,11 +40,11 @@ public class Code8 {
             }
 
             if (Integer.MAX_VALUE / 10 == result) {
-                if (isPos && c > 7) return Integer.MAX_VALUE;
-                if (!isPos && c > 8) return Integer.MIN_VALUE;
+                if (isPos && c >= 55) return Integer.MAX_VALUE;
+                if (!isPos && c >= 56) return Integer.MIN_VALUE;
             }
 
-            result += result * 10 + Integer.parseInt(c.toString());
+            result = result * 10 + (c - 48);
         }
 
         return isPos ? result : -result;
@@ -53,7 +53,8 @@ public class Code8 {
     public static void main(String[] args) {
         Code8 code8 = new Code8();
 
-        String str = "42";
+        System.out.println(Integer.MAX_VALUE);
+        String str = "2147483646";
         System.out.println(code8.myAtoi(str));
 
     }
