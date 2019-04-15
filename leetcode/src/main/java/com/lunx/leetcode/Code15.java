@@ -2,6 +2,7 @@ package com.lunx.leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -30,6 +31,46 @@ public class Code15 {
                     tempList.add(nums[r]);
 
                     result.add(tempList);
+
+                    while (r - 1 > l && nums[r] == nums[r - 1])
+                        r--;
+                    while (l + 1 < r && nums[l] == nums[l + 1])
+                        l++;
+
+                    l++;
+                    r--;
+                } else if (temp + nums[l] + nums[r] > 0) {
+                    while (r - 1 > l && nums[r] == nums[r - 1])
+                        r--;
+                    r--;
+                } else {
+                    while (l + 1 < r && nums[l] == nums[l + 1])
+                        l++;
+                    l++;
+                }
+
+            }
+
+            while (i + 1 < nums.length && nums[i] == nums[i + 1])
+                i++;
+        }
+
+        return result;
+    }
+
+    public List<List<Integer>> threeSum1(int[] nums) {
+        if (nums.length < 3) return Collections.emptyList();
+        Arrays.sort(nums);
+
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i + 1 < nums.length; i++) {
+
+            int temp = nums[i];
+            int l = i + 1, r = nums.length - 1;
+            while (l < r) {
+                if (temp + nums[l] + nums[r] == 0) {
+
+                    result.add(Arrays.asList(temp, nums[l], nums[r]));
 
                     while (r - 1 > l && nums[r] == nums[r - 1])
                         r--;
