@@ -8,7 +8,6 @@ import java.util.List;
  * @title Play
  * @description
  * @date 2018/11/06
- * Coffee Box 连咖啡
  */
 public class Play {
     private int id;

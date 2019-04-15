@@ -12,7 +12,6 @@ import java.io.InputStream;
  * @title ImageDemo
  * @description
  * @date 2018/11/16
- * Coffee Box 连咖啡
  */
 public class ImageDemo {
 

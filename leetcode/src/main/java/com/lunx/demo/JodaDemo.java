@@ -8,7 +8,6 @@ import org.joda.time.LocalDate;
  * @title JodaDemo
  * @description
  * @date 2019/02/28
- * Coffee Box 连咖啡
  */
 public class JodaDemo {
 

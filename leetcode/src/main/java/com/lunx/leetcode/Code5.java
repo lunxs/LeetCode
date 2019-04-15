@@ -9,7 +9,6 @@ import java.util.Map;
  * @title Code5
  * @description
  * @date 2019/02/27
- * Coffee Box 连咖啡
  */
 public class Code5 {
     public String longestPalindrome(String s) {

@@ -6,7 +6,6 @@ package com.lunx.model;
  * @title WightAndFloatIngPrice
  * @description
  * @date 2019/03/19
- * Coffee Box 连咖啡
  */
 public class WightAndFloatIngPrice {
 

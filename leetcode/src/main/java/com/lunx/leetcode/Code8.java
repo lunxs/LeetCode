@@ -6,7 +6,6 @@ package com.lunx.leetcode;
  * @title Code8
  * @description
  * @date 2019/03/11
- * Coffee Box 连咖啡
  */
 public class Code8 {
 

@@ -13,7 +13,6 @@ import java.util.concurrent.ThreadLocalRandom;
  * @title RandomDeom
  * @description
  * @date 2019/03/19
- * Coffee Box 连咖啡
  */
 public class RandomDeom {
 

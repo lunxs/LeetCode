@@ -1,14 +1,11 @@
 package com.lunx.demo;
 
 import com.lunx.model.Play;
-import org.joda.time.Days;
-import org.joda.time.LocalDate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 /**
@@ -17,7 +14,6 @@ import java.util.stream.Collectors;
  * @title Java1Demo
  * @description
  * @date 2019/01/07
- * Coffee Box 连咖啡
  */
 public class Java1Demo {
 

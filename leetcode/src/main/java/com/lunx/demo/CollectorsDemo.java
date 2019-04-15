@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
  * @title CollectorsDemo
  * @description
  * @date 2019/01/24
- * Coffee Box 连咖啡
  */
 public class CollectorsDemo {
 

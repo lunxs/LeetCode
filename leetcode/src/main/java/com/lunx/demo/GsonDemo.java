@@ -10,7 +10,6 @@ import java.util.Map;
  * @title GsonDemo
  * @description
  * @date 2019/01/22
- * Coffee Box 连咖啡
  */
 public class GsonDemo {
 

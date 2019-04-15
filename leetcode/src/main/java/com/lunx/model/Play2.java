@@ -6,7 +6,6 @@ package com.lunx.model;
  * @title Play2
  * @description
  * @date 2018/12/26
- * Coffee Box 连咖啡
  */
 public class Play2 extends Play {
 

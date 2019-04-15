@@ -4,7 +4,9 @@ import com.lunx.model.Play;
 import com.lunx.model.Play2;
 
 import java.text.DecimalFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -12,7 +14,6 @@ import java.util.stream.Collectors;
  * @Description
  * @Author XieDesong
  * @Date 2018/10/19
- * Coffee Box 连咖啡
  */
 public class JavaDemo {
 
