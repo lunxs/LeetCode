@@ -14,13 +14,13 @@ public class LeetcodeApplicationTests {
 
     @Before
     public void init() {
-        System.out.println("************************************");
         System.out.println("start test");
+        System.out.println("************************************");
     }
 
     @After
     public void after() {
-        System.out.println("end test");
         System.out.println("************************************");
+        System.out.println("end test");
     }
 }

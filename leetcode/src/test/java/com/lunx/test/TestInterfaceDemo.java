@@ -23,5 +23,8 @@ public class TestInterfaceDemo extends LeetcodeApplicationTests {
     @Test
     public void test() {
         interfaceMap.forEach((key, value) -> System.out.println(key + ":" + value.getClass().getName()));
+
+        TestInterface testService2 = interfaceMap.get("testService2");
+        testService2.test();
     }
 }
