@@ -54,6 +54,6 @@ public class DateDemo {
     public static void main(String[] args) {
 //        test3();
 
-        System.out.println(LocalDate.now().toString());
+        System.out.println(new Date().toString());
     }
 }
