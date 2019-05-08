@@ -5,7 +5,10 @@ import com.google.gson.reflect.TypeToken;
 import com.lunx.model.WightAndFloatIngPrice;
 
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author XieDesong
@@ -49,12 +52,29 @@ public class RandomDeom {
         return revisedRate;
     }
 
+    private void test() {
+        String red = ThreadLocalRandom.current()
+                .ints(1, 34)
+                .distinct()
+                .limit(6)
+                .sorted()
+                .mapToObj(Integer::toString)
+                .collect(Collectors.joining("-"));
+
+        System.out.println("red:" + red);
+
+        String blue = ThreadLocalRandom.current()
+                .ints(1, 17)
+                .limit(1)
+                .mapToObj(Integer::toString)
+                .collect(Collectors.joining("-"));
+
+        System.out.println("blue:" + blue);
+    }
+
     public static void main(String[] args) {
         RandomDeom randomDeom = new RandomDeom();
-        for (int i = 0; i < 100; i++) {
 
-            int floatIngPrice = randomDeom.getFloatIngPrice();
-            System.out.println(floatIngPrice);
-        }
+        randomDeom.test();
     }
 }
