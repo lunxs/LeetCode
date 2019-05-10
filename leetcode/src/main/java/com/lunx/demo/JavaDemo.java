@@ -131,10 +131,15 @@ public class JavaDemo {
         System.out.println(collect);
     }
 
+    private static void test13() {
+        String a = null;
+        String[] split = a.split(",");
+    }
+
     public static void main(String[] args) {
         List<Play> init = init();
 
-        test12();
+        test13();
 
     }
 
