@@ -24,7 +24,8 @@ public class RandomDeom {
     private int getFloatIngPrice() {
         String wightAndFloatingPriceJson = "[{\"wight\":5,\"floatingPrice\":-200},{\"wight\":1,\"floatingPrice\":-100},{\"wight\":1,\"floatingPrice\":0},{\"wight\":1,\"floatingPrice\":100},{\"wight\":5,\"floatingPrice\":200}]";
         List<WightAndFloatIngPrice> wightAndFloatIngPricesList = GSON.fromJson(wightAndFloatingPriceJson,
-                new TypeToken<List<WightAndFloatIngPrice>>() {}.getType());
+                new TypeToken<List<WightAndFloatIngPrice>>() {
+                }.getType());
 
         int top = wightAndFloatIngPricesList.stream()
                 .map(item -> item.getWight())
