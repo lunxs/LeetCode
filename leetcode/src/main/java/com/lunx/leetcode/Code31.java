@@ -15,31 +15,31 @@ public class Code31 {
         int length = nums.length;
         if (length <= 1) return;
 
-
-        for (int index1 = length - 2; index1 >= 0; index1--) {
-            if (nums[index1] >= nums[index1 + 1]) {
-                continue;
+        int index1 = length - 1;
+        while (index1 > 0) {
+            if (nums[index1 - 1] < nums[index1]) {
+                break;
             }
-
-            for (int index2 = index1 + 1; index2 < length; index2++) {
-                if (nums[index1] < nums[index2] && index2< length - 1) {
-                    continue;
-                }
-
-                if (nums[index1] >= nums[index2]) {
-                    swap(nums, index1, index2 - 1);
-                    sort(nums, index2 - 1, length - 1);
-                } else {
-                    swap(nums, index1, index2);
-                    sort(nums, index2, length - 1);
-                }
-
-                return;
-            }
+            index1--;
         }
 
+        if (index1 == 0) {
+            sort(nums, 0, length - 1);
+            return;
+        }
+
+        int index2 = length - 1;
+        while (index2 >= index1) {
+            if (nums[index2] > nums[index1 - 1]) {
+                break;
+            }
+            index2--;
+        }
+
+        swap(nums, index1 - 1, index2);
+
         // sort
-        sort(nums, 0, length - 1);
+        sort(nums, index1, length - 1);
     }
 
     private void sort(int[] nums, int start, int end) {
@@ -61,7 +61,7 @@ public class Code31 {
     public static void main(String[] args) {
         Code31 code31 = new Code31();
 
-        int[] nums = {1,3,2};
+        int[] nums = {1,2,3};
         code31.nextPermutation(nums);
 
         for (int i : nums) {
