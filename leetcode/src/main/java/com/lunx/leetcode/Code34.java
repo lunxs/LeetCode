@@ -12,15 +12,15 @@ public class Code34 {
         int[] result = new int[2];
 
         int low = 0, high = nums.length - 1, mid;
-        while(low <= high){
+        while (low <= high) {
             mid = low + (high - low) / 2;
-            if(target <= nums[mid]){
+            if (target <= nums[mid]) {
                 high = mid - 1;
-            }else{
+            } else {
                 low = mid + 1;
             }
         }
-        if(low < nums.length && nums[low] == target) {
+        if (low < nums.length && nums[low] == target) {
             result[0] = low;
         } else {
             result[0] = -1;
@@ -29,11 +29,11 @@ public class Code34 {
         }
 
         high = nums.length - 1;
-        while(low <= high){
+        while (low <= high) {
             mid = low + (high - low) / 2;
-            if(target >= nums[mid]){
+            if (target >= nums[mid]) {
                 low = mid + 1;
-            }else{
+            } else {
                 high = mid - 1;
             }
         }
