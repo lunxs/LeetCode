@@ -2,6 +2,8 @@ package com.lunx.demo;
 
 import com.lunx.model.Play;
 
+import javax.sound.midi.Soundbank;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -95,9 +97,14 @@ public class Java1Demo {
         System.out.println(a * 1.0 / 100);
     }
 
+    public static void test8() {
+        BigDecimal bigDecimal = new BigDecimal("0.1");
+        System.out.println(bigDecimal);
+    }
+
     public static void main(String[] args) {
 //        test5();
-        test7();
+        test8();
     }
 
 
