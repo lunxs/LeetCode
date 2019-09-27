@@ -1,6 +1,10 @@
 package com.lunx.demo;
 
 import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+
+import javax.validation.constraints.NotNull;
+
 
 /**
  * @author XieDesong
@@ -11,10 +15,27 @@ import org.joda.time.LocalDate;
  */
 public class JodaDemo {
 
-    public static void main(String[] args) {
-        LocalDate now = LocalDate.now();
-        System.out.println(now);
+    private static void test1() {
+        LocalDate yyyyMMdd = LocalDate.parse("20190805", DateTimeFormat.forPattern("yyyyMMdd")).plusDays(1);
 
-        System.out.println(now.minusDays(1));
+        System.out.println(yyyyMMdd);
+
+    }
+
+    private static boolean test2(@NotNull String a) {
+        System.out.println(a);
+        return false;
+    }
+
+    public static void main(String[] args) {
+        String a = null;
+        boolean b = test2(a);
+
+        System.out.println(b);
+    }
+
+    private void word() {
+
+
     }
 }
