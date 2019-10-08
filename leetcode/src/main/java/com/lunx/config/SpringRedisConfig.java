@@ -18,13 +18,14 @@ import redis.clients.jedis.JedisPoolConfig;
  */
 @Configuration
 public class SpringRedisConfig {
+
     @Bean
     public RedisConnectionFactory redisConnectionFactory(Environment environment, JedisPoolConfig jedisPoolConfig) {
         JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
         jedisConnectionFactory.setPoolConfig(jedisPoolConfig);
         jedisConnectionFactory.setHostName(environment.getProperty("spring.redis.host"));
         jedisConnectionFactory.setPassword(environment.getProperty("spring.redis.password"));
-        jedisConnectionFactory.setPort(6379);
+        jedisConnectionFactory.setPort(Integer.parseInt(environment.getProperty("")));
         jedisConnectionFactory.setTimeout(3600);
         jedisConnectionFactory.setDatabase(5);
         return jedisConnectionFactory;
