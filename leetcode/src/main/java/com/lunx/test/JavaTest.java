@@ -54,9 +54,14 @@ public class JavaTest {
         System.out.println(param);
     }
 
+    private static void test2() {
+        String a = "2019102015:13:02.000000000";
+        String b = "2019/10/2015:13:02.300000000";
+
+        System.out.println(a.substring(1, 8));
+    }
+
     public static void main(String[] args) {
-//        method(null);
-        String a = "abcdefghijkttt";
-        System.out.println(a.substring(5, 5+6));
+        test2();
     }
 }

@@ -1,9 +1,12 @@
 package com.lunx.demo;
 
 import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
 
+import javax.print.attribute.IntegerSyntax;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 
 /**
@@ -27,15 +30,25 @@ public class JodaDemo {
         return false;
     }
 
+    private static void test3() {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime startTime = now.minusMinutes(60);
+
+        Date today = now.toLocalDate().toDate();
+
+        System.out.println(today);
+        System.out.println(now.minusDays(1).toString("yyyyMMdd"));
+    }
+
     public static void main(String[] args) {
-        String a = null;
-        boolean b = test2(a);
+        LocalDateTime initTime = LocalDateTime.now().minusHours(1).withSecondOfMinute(0).withMillisOfSecond(0);
 
-        System.out.println(b);
+        System.out.println(initTime);
+
+        System.out.println(Long.MAX_VALUE);
+
+        System.out.println(Integer.MAX_VALUE);
+
     }
 
-    private void word() {
-
-
-    }
 }
