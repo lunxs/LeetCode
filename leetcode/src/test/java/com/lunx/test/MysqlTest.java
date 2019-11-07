@@ -3,6 +3,7 @@ package com.lunx.test;
 import com.lunx.LeetcodeApplicationTests;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
