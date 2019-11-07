@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import redis.clients.jedis.JedisPoolConfig;
 
@@ -25,7 +24,7 @@ public class SpringRedisConfig {
         jedisConnectionFactory.setPoolConfig(jedisPoolConfig);
         jedisConnectionFactory.setHostName(environment.getProperty("spring.redis.host"));
         jedisConnectionFactory.setPassword(environment.getProperty("spring.redis.password"));
-        jedisConnectionFactory.setPort(Integer.parseInt(environment.getProperty("")));
+        jedisConnectionFactory.setPort(Integer.parseInt(environment.getProperty("spring.redis.port")));
         jedisConnectionFactory.setTimeout(3600);
         jedisConnectionFactory.setDatabase(5);
         return jedisConnectionFactory;

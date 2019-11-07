@@ -3,9 +3,12 @@ package com.lunx.test;
 import com.lunx.LeetcodeApplicationTests;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author desong.xie
@@ -19,6 +22,9 @@ public class MysqlTest extends LeetcodeApplicationTests {
     @Autowired
     private DataSource dataSource;
 
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
 
     @Test
     public void test() {
@@ -27,6 +33,8 @@ public class MysqlTest extends LeetcodeApplicationTests {
             Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * from test_first");
+            int row = resultSet.getRow();
+            System.out.println(row);
             System.out.println(resultSet);
 
 
@@ -35,5 +43,12 @@ public class MysqlTest extends LeetcodeApplicationTests {
             e.printStackTrace();
         } finally {
         }
+    }
+
+    @Test
+    public void testJDBC() {
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT * from test_first");
+
+        System.out.println(maps);
     }
 }
