@@ -22,9 +22,9 @@ public class RedisTest extends LeetcodeApplicationTests {
 
     @Test
     public void test() {
-        stringRedisTemplate.opsForValue().set("test-key", "test-demo");
+        stringRedisTemplate.opsForValue().set("test_key", "test demo");
 
-        String s = stringRedisTemplate.opsForValue().get("test-key");
+        String s = stringRedisTemplate.opsForValue().get("test_key");
 
         System.out.println(s);
     }
