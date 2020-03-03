@@ -3,11 +3,14 @@ package com.lunx.test;
 import com.lunx.LeetcodeApplicationTests;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 
@@ -24,9 +27,17 @@ public class MysqlTest extends LeetcodeApplicationTests {
     private DataSource dataSource;
 
     @Autowired
+    @Qualifier("jdbcTemplate")
     private JdbcTemplate jdbcTemplate;
 
+    /*@Autowired
+    @Qualifier("mysql5JdbcTemplate")
+    private JdbcTemplate mysql5JdbcTemplate;*/
 
+
+    /**
+     * DataSource 测试
+     */
     @Test
     public void test() {
 
@@ -46,10 +57,26 @@ public class MysqlTest extends LeetcodeApplicationTests {
         }
     }
 
+    /**
+     * JDBC 测试
+     */
     @Test
     public void testJDBC() {
         List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT * from test_first");
-
         System.out.println(maps);
+
     }
+
+    /**
+     * 双数据源 测试
+     */
+    /*@Test
+    public void testTwoJDBC() {
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT * from test_first");
+        System.out.println(maps);
+
+        List<Map<String, Object>> maps4Mysql5 = mysql5JdbcTemplate.queryForList("SELECT * from ent_base_info");
+        System.out.println(maps4Mysql5);
+    }*/
+
 }
