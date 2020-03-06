@@ -44,7 +44,7 @@ public class MysqlTest extends LeetcodeApplicationTests {
         try {
             Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * from test_first");
+            ResultSet resultSet = statement.executeQuery("SELECT * from test_first limit 2");
             int row = resultSet.getRow();
             System.out.println(row);
             System.out.println(resultSet);
@@ -62,21 +62,33 @@ public class MysqlTest extends LeetcodeApplicationTests {
      */
     @Test
     public void testJDBC() {
-        List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT * from test_first");
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT * from test_first limit 2");
         System.out.println(maps);
 
     }
+
+    /**
+     * 第二个数据源测试
+     */
+    /*@Test
+    public void test2JDBC() {
+
+        List<Map<String, Object>> maps4Mysql5 = mysql5JdbcTemplate.queryForList("SELECT * from ent_base_info limit 2");
+        System.out.println(maps4Mysql5);
+    }*/
 
     /**
      * 双数据源 测试
      */
     /*@Test
     public void testTwoJDBC() {
-        List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT * from test_first");
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT * from test_first limit 2");
         System.out.println(maps);
 
-        List<Map<String, Object>> maps4Mysql5 = mysql5JdbcTemplate.queryForList("SELECT * from ent_base_info");
+        List<Map<String, Object>> maps4Mysql5 = mysql5JdbcTemplate.queryForList("SELECT * from ent_base_info limit 2");
         System.out.println(maps4Mysql5);
     }*/
+
+
 
 }
