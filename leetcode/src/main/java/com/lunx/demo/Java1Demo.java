@@ -104,7 +104,17 @@ public class Java1Demo {
 
     public static void main(String[] args) {
 //        test5();
-        test8();
+//        test8();
+
+        int a = 0;
+
+        if (a != 1) {
+            System.out.println(1);
+        } else if (a != 2) {
+            System.out.println(2);
+        } else {
+            System.out.println(3);
+        }
     }
 
 

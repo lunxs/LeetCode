@@ -1,14 +1,11 @@
 package com.lunx.leetcode;
 
-import java.math.BigDecimal;
-
 /**
  * @author desong.xie
  * @version 1.0
  * @title Code43
  * @date 2020/01/14
  * @description
- * @ 汇付天下
  */
 public class Code43 {
 
