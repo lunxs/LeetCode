@@ -41,80 +41,15 @@ public class Java1Demo {
 
     }
 
-    private static void test2() {
-        Map<String, String> map = new HashMap<>();
-        System.out.println(map);
-    }
-
-    private static void test3() {
-
-        System.out.println("".split(";").length);
-        System.out.println("a".split(";").length);
-        System.out.println(";a".split(";").length);
-        System.out.println("a;".split(";").length);
-        System.out.println(";".split(";").length);
-        System.out.println(";;".split(";").length);
-
-    }
-
-    private static void test4() {
-        Integer a = 1;
-        Integer b = 2;
-        Integer c = 3;
-        Integer d = 3;
-        Integer e = 321;
-        Integer f = 321;
-        Long g = 3L;
-
-        System.out.println(c == d);
-        System.out.println(e == f);
-        System.out.println(c == (a + b));
-        System.out.println(c.equals(a + b));
-        System.out.println(g == (a + b));
-        System.out.println(g.equals(a + b));
-
-    }
-
-    private static void test5() {
-        int a = 25;
-        int b = 100;
-        System.out.println(0 / 1);
-    }
-
-    public static void test6() {
-        for (int i = 0; i < 10; i++) {
-            if (i == 5) {
-                System.out.println(i);
-                return;
-            }
-        }
-
-        System.out.println(8);
-    }
-
-    public static void test7() {
-        int a = 25;
-        System.out.println(a * 1.0 / 100);
-    }
-
-    public static void test8() {
-        BigDecimal bigDecimal = new BigDecimal("0.1");
-        System.out.println(bigDecimal);
-    }
-
     public static void main(String[] args) {
-//        test5();
-//        test8();
 
-        int a = 0;
+//        test1();
 
-        if (a != 1) {
-            System.out.println(1);
-        } else if (a != 2) {
-            System.out.println(2);
-        } else {
-            System.out.println(3);
-        }
+        String a = null;
+
+        System.out.println(a.equals("c"));
+
+        System.out.println("a".equals(null));
     }
 
 

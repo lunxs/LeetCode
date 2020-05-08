@@ -32,8 +32,9 @@ public class CollectorsDemo {
 
     private void test1() {
         List<Play> init = init();
-        init.stream()
+        Map<Integer, Play> collect = init.stream()
                 .collect(HashMap::new, (m, v) -> m.put(v.getId(), v), HashMap::putAll);
+        System.out.println(collect);
     }
 
     private void test2() {
@@ -67,7 +68,7 @@ public class CollectorsDemo {
     public static void main(String[] args) {
         CollectorsDemo demo = new CollectorsDemo();
 
-        demo.test2();
+        demo.test1();
     }
 
     public static List<Play> init() {
