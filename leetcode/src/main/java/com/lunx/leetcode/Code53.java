@@ -5,7 +5,6 @@ package com.lunx.leetcode;
  * @version 1.0
  * @date 2020/05/08
  * @description
- * @ 汇付天下
  */
 public class Code53 {
     public int maxSubArray(int[] nums) {
