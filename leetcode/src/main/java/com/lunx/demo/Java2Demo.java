@@ -2,6 +2,7 @@ package com.lunx.demo;
 
 import com.lunx.model.Play;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,11 +27,17 @@ public class Java2Demo {
         System.out.println("a2^".equals(sb.toString()));
         System.out.println(sb.toString());
 
+    }
 
+    private static void test2() {
+        String a = "123456";
+        BigDecimal divide = new BigDecimal(a).divide(new BigDecimal(1000));
+        String format = String.format("%.2f", divide);
+        System.out.println(format);
     }
 
     public static void main(String[] args) {
-        test1();
+        test2();
     }
 
 
