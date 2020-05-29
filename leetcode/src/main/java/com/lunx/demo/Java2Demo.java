@@ -36,8 +36,14 @@ public class Java2Demo {
         System.out.println(format);
     }
 
+    private static void test3() {
+        String a = "123456.23";
+        int i = Integer.parseInt(a);
+        System.out.println(i);
+    }
+
     public static void main(String[] args) {
-        test2();
+        test3();
     }
 
 
