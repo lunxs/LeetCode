@@ -43,7 +43,9 @@ public class Java2Demo {
     }
 
     public static void main(String[] args) {
-        test3();
+//        test3();
+        String a = "aaa";
+        System.out.println(a.contains("aaa"));
     }
 
 

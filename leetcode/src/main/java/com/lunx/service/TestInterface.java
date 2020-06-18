@@ -6,7 +6,6 @@ package com.lunx.service;
  * @title TestInterface
  * @description
  * @date 2019/04/19
- * Coffee Box 连咖啡
  */
 public interface TestInterface {
 
