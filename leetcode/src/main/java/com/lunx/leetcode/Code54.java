@@ -21,6 +21,7 @@ public class Code54 {
         int ls = 0, rs = 0;
         int le = matrix.length - 1, re = matrix[0].length - 1;
         int l = 0, r = 0;
+        // 逆时针旋转
         while (true) {
             // down
             if (r > re) {
