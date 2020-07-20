@@ -45,15 +45,13 @@ public class Code61 {
         k = k % length;
         if (k == 0) return head;
 
-        ListNode result = head;
         ListNode p1 = head;
         int n = length - k;
         int i = 1;
         while (i++ < n) {
             p1 = p1.next;
-            result = result.next;
         }
-        result = result.next;
+        ListNode result = p1.next;
         p1.next = null;
         p.next = head;
 
@@ -71,7 +69,7 @@ public class Code61 {
 
 //        print(listNode);
         Code61 code61 = new Code61();
-        ListNode listNode1 = code61.rotateRight(listNode, 6);
+        ListNode listNode1 = code61.rotateRight(listNode, 5);
         print(listNode1);
     }
 
