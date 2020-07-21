@@ -23,7 +23,7 @@ public class Code62 {
 
     public static void main(String[] args) {
         Code62 code62 = new Code62();
-        int i = code62.uniquePaths(7, 3);
+        int i = code62.uniquePaths(3, 3);
         System.out.println(i);
     }
 }
