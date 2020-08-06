@@ -27,10 +27,20 @@ public class GsonDemo {
     }
 
     private static void test2() {
+        String a = "{\"a\":\"123\",\"b\":\"gasf\"}";
 
+        Aa aa = GSON.fromJson(a, Aa.class);
+
+        System.out.println(aa.a);
     }
 
     public static void main(String[] args) {
-        test1();
+        test2();
+    }
+
+    class Aa{
+        private int a;
+        private String b;
+
     }
 }

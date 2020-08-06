@@ -26,6 +26,11 @@ public class Code1 {
     }
 
     public static void main(String[] args) {
+        int[] nums = {2, 7, 11, 15};
+        int target = 9;
 
+        Code1 code1 = new Code1();
+        int[] ints = code1.twoSum(nums, target);
+        System.out.println(ints[0] + ", " + ints[1]);
     }
 }

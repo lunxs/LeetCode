@@ -1,14 +1,9 @@
 package com.lunx.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.alibaba.druid.support.http.StatViewServlet;
-import com.alibaba.druid.support.http.WebStatFilter;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -23,18 +18,17 @@ import java.sql.SQLException;
  * @description
  */
 @Configuration
-public class DruidConfiguration {
+public class DruidConfiguration4Mysql5 {
 
-    @Bean
-    @Primary
+    /*@Bean(value = "mysql5DataSource")
     public DataSource dataSource(Environment environment) {
         DruidDataSource datasource = new DruidDataSource();
 
-        datasource.setUrl(environment.getProperty("spring.datasource.url"));
-        datasource.setUsername(environment.getProperty("spring.datasource.data-username"));
+        datasource.setUrl(environment.getProperty("spring.datasource.url-5"));
+        datasource.setUsername(environment.getProperty("spring.datasource.data-username-5"));
         // 这里可以做加密处理
-        datasource.setPassword(environment.getProperty("spring.datasource.data-password"));
-        datasource.setDriverClassName(environment.getProperty("spring.datasource.driver-class-name"));
+        datasource.setPassword(environment.getProperty("spring.datasource.data-password-5"));
+        datasource.setDriverClassName(environment.getProperty("spring.datasource.driver-class-name-5"));
 
         // configuration
         // 初始化连接大小
@@ -73,36 +67,10 @@ public class DruidConfiguration {
         return datasource;
     }
 
-    @Bean(value = "jdbcTemplate")
-    @Primary
-    public JdbcTemplate jdbcTemplate(@Qualifier("dataSource") DataSource dataSource) {
+    @Bean(value = "mysql5JdbcTemplate")
+    public JdbcTemplate jdbcTemplate(@Qualifier("mysql5DataSource") DataSource dataSource) {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         return jdbcTemplate;
-    }
+    }*/
 
-    @Bean
-    public ServletRegistrationBean statViewServlet() {
-        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
-        // 设置ip白名单
-        servletRegistrationBean.addInitParameter("allow", "127.0.0.1");
-        // 设置ip黑名单，优先级高于白名单
-        servletRegistrationBean.addInitParameter("deny", "192.168.0.19");
-        // 设置控制台管理用户
-        servletRegistrationBean.addInitParameter("loginUsername", "root");
-        servletRegistrationBean.addInitParameter("loginPassword", "root");
-        // 是否可以重置数据
-        servletRegistrationBean.addInitParameter("resetEnable", "false");
-        return servletRegistrationBean;
-    }
-
-    @Bean
-    public FilterRegistrationBean statFilter() {
-        // 创建过滤器
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new WebStatFilter());
-        // 设置过滤器过滤路径
-        filterRegistrationBean.addUrlPatterns("/*");
-        // 忽略过滤的形式
-        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
-        return filterRegistrationBean;
-    }
 }
