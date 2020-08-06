@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @date 2019/09/09
  * @description
  */
-public class JavaTest {
+public class ThreadPoolDemo {
 
     private static ExecutorService executorService = new ThreadPoolExecutor(5, 5,
             0L, TimeUnit.MILLISECONDS,

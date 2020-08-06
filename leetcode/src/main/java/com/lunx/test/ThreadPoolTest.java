@@ -5,7 +5,7 @@ public class ThreadPoolTest {
     public static void main(String[] args) {
 
         System.out.println("ThreadPoolTest start");
-        JavaTest.threadPool();
+        ThreadPoolDemo.threadPool();
         System.out.println("ThreadPoolTest end");
     }
 }
