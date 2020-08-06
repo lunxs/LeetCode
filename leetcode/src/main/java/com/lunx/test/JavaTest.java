@@ -4,6 +4,9 @@ import com.lunx.model.ElvisDemo;
 import com.lunx.model.Play;
 import org.springframework.beans.BeanUtils;
 
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @author desong.xie
  * @version 1.0
@@ -12,6 +15,11 @@ import org.springframework.beans.BeanUtils;
  * @description
  */
 public class JavaTest {
+
+    private static ExecutorService executorService = new ThreadPoolExecutor(5, 5,
+            0L, TimeUnit.MILLISECONDS,
+            new LinkedBlockingQueue<>(), new DefaultThreadFactory1());
+//    private static ExecutorService executorService = Executors.newFixedThreadPool(5);
 
     private static void test() {
         Play play = new Play();
@@ -54,9 +62,96 @@ public class JavaTest {
         System.out.println(param);
     }
 
+    private static void sum() {
+        long startTime = System.currentTimeMillis();
+        long sum = 0L;
+        for (long i = 0; i < Integer.MAX_VALUE; i++) {
+            sum += i;
+        }
+
+//        System.out.println(sum);
+
+        long endTime = System.currentTimeMillis();
+
+        System.out.println(Thread.currentThread().getName());
+        System.out.println("runtime:" + (endTime - startTime) + "ms");
+    }
+
+    private static void threadSingle() {
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < 10; i++) {
+            sum();
+        }
+
+        long endTime = System.currentTimeMillis();
+        System.out.println("single runtime:" + (endTime - startTime) + "ms");
+    }
+
+    public static void threadPool() {
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < 10; i++) {
+            executorService.submit(() -> sum());
+//            executorService.execute(() -> System.out.println(1));
+        }
+
+
+//        executorService.shutdown();
+
+        long endTime = System.currentTimeMillis();
+        System.out.println("pool runtime:" + (endTime - startTime) + "ms");
+    }
+
     public static void main(String[] args) {
-//        method(null);
-        String a = "abcdefghijkttt";
-        System.out.println(a.substring(5, 5+6));
+        try {
+            threadPool();
+
+            System.out.println("first end");
+            Thread.sleep(10000L);
+            System.out.println("second start");
+
+            threadPool();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            System.out.println("***************");
+//            threadSingle();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        }
+    }
+
+    static class DefaultThreadFactory1 implements ThreadFactory {
+        private static final AtomicInteger poolNumber = new AtomicInteger(1);
+        private final ThreadGroup group;
+        private final AtomicInteger threadNumber = new AtomicInteger(1);
+        private final String namePrefix;
+
+        DefaultThreadFactory1() {
+            SecurityManager s = System.getSecurityManager();
+            group = (s != null) ? s.getThreadGroup() :
+                    Thread.currentThread().getThreadGroup();
+
+            long time = System.currentTimeMillis();
+            namePrefix = "pool-" +
+                    poolNumber.getAndIncrement() +
+                    "-thread-" + time + "-";
+        }
+
+        public Thread newThread(Runnable r) {
+            Thread t = new Thread(group, r,
+                    namePrefix + threadNumber.getAndIncrement(),
+                    0);
+            if (t.isDaemon())
+                t.setDaemon(false);
+            if (t.getPriority() != Thread.NORM_PRIORITY)
+                t.setPriority(Thread.NORM_PRIORITY);
+            return t;
+        }
     }
 }
