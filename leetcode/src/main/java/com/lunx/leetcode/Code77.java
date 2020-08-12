@@ -45,11 +45,36 @@ public class Code77 {
         result.addAll(rTemp);
     }
 
+    public List<List<Integer>> combine1(int n, int k) {
+        // init first combination
+        LinkedList<Integer> nums = new LinkedList<Integer>();
+        for(int i = 1; i < k + 1; ++i)
+            nums.add(i);
+        nums.add(n + 1);
+
+        List<List<Integer>> output = new ArrayList<List<Integer>>();
+        int j = 0;
+        while (j < k) {
+            // add current combination
+            output.add(new LinkedList(nums.subList(0, k)));
+            // increase first nums[j] by one
+            // if nums[j] + 1 != nums[j + 1]
+            j = 0;
+            while ((j < k) && (nums.get(j + 1) == nums.get(j) + 1))
+                nums.set(j, j++ + 1);
+            nums.set(j, nums.get(j) + 1);
+        }
+        return output;
+    }
+
     public static void main(String[] args) {
         Code77 code77 = new Code77();
 
-        int n = 3, k = 2;
+        int n = 5, k = 2;
         List<List<Integer>> combine = code77.combine(n, k);
         System.out.println(new Gson().toJson(combine));
+
+        List<List<Integer>> lists = code77.combine1(n, k);
+        System.out.println(new Gson().toJson(lists));
     }
 }
