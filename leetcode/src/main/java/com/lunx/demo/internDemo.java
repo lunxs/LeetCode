@@ -12,5 +12,10 @@ public class internDemo {
         String st2 = new StringBuilder("ja").append("va").toString();
         System.out.println(st2.intern() == st2);
 
+        String s = new String("aa");
+        s.intern();
+        String s1 = "aa";
+        System.out.println(s == s1);
+
     }
 }
