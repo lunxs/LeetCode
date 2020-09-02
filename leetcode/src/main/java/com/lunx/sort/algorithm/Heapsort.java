@@ -34,18 +34,18 @@ public class Heapsort {
         int left = 2 * i + 1;
         // 右孩子下标
         int right = 2 * i + 2;
-        int largest = i;
+        int largestIndex = i;
 
-        if (left < length && arr[left] > arr[largest]) {
-            largest = left;
+        if (left < length && arr[left] > arr[largestIndex]) {
+            largestIndex = left;
         }
-        if (right < length && arr[right] > arr[largest]) {
-            largest = right;
+        if (right < length && arr[right] > arr[largestIndex]) {
+            largestIndex = right;
         }
 
-        if (largest != i) {
-            swap(arr, i, largest);
-            heapify(arr, largest, length);
+        if (largestIndex != i) {
+            swap(arr, i, largestIndex);
+            heapify(arr, largestIndex, length);
         }
     }
 
