@@ -10,7 +10,11 @@ import com.google.gson.Gson;
  */
 public class Heapsort {
 
-    public static void heapsort(int[] arr) {
+    /**
+     * 升序 - 大顶堆实现
+     * @param arr
+     */
+    public static void heapSort(int[] arr) {
         if (null == arr || arr.length < 1) return;
 
         int length = arr.length;
@@ -55,10 +59,53 @@ public class Heapsort {
         arr[j] = temp;
     }
 
+    /**
+     * 降序 - 小顶堆实现
+     */
+    public static void heapSortDescending(int[] arr) {
+        if (null == arr || arr.length < 1) return;
+
+        int length = arr.length;
+        buildMinHeap(arr, length);
+
+        for (int i = length - 1; i >= 0; i--) {
+            swap(arr, 0, i);
+            length--;
+            heapifyMin(arr, 0, length);
+        }
+    }
+
+    public static void buildMinHeap(int[] arr, int length) {
+        for (int i = length / 2; i >= 0; i--) {
+            heapifyMin(arr, i, length);
+        }
+    }
+
+    public static void heapifyMin(int[] arr, int i, int length) {
+        int minIndex = i;
+
+        int leftNodeIndex = 2 * i + 1;
+        int rightNodeIndex = 2 * i + 2;
+
+        if (leftNodeIndex < length && arr[leftNodeIndex] < arr[minIndex]) {
+            minIndex = leftNodeIndex;
+        }
+        if (rightNodeIndex < length && arr[rightNodeIndex] < arr[minIndex]) {
+            minIndex = rightNodeIndex;
+        }
+
+        if (minIndex != i) {
+            swap(arr, i, minIndex);
+            heapifyMin(arr, minIndex, length);
+        }
+    }
+
+
+
     public static void main(String[] args) {
         int[] ints = {5,2,3,7,6,8,9,35,1,13,23,61,31,15,16};
 
-        heapsort(ints);
+        heapSortDescending(ints);
 
         System.out.println(new Gson().toJson(ints));
     }
