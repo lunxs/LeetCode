@@ -103,7 +103,7 @@ public class Heapsort {
 
         // 迭代实现 start
         while (i < length) {
-            // 假设当前索引为最小索引
+            // 假设当前索引为最小值索引
             int minIndex = i;
             // 左孩子索引
             int leftNodeIndex = 2 * minIndex + 1;
