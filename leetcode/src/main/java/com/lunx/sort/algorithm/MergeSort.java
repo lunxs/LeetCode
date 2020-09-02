@@ -10,10 +10,6 @@ import com.google.gson.Gson;
  */
 public class MergeSort {
 
-    /**
-     * 排序主方法
-     * @param arr
-     */
     public static void mergeSort(int[] arr) {
         if (null == arr || arr.length < 1) return;
 
@@ -21,7 +17,7 @@ public class MergeSort {
     }
 
     /**
-     * 递归排序
+     * 归并排序 主方法 - 递归实现
      * @param arr 主数组
      * @param start 排序起始索引
      * @param end 排序终止索引
