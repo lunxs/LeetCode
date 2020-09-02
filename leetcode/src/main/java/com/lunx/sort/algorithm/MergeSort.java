@@ -39,16 +39,16 @@ public class MergeSort {
      * @param arr
      * @param left 左索引
      * @param right 右索引
-     * @param min 中间索引
+     * @param mid 中间索引
      */
-    public static void merge(int[] arr, int left, int right, int min) {
-        // [left, min],[min+1, right]
+    public static void merge(int[] arr, int left, int right, int mid) {
+        // [left, mid],[mid+1, right]
         int[] temp = new int[right - left + 1];
 
         // 定义数组遍历的左起始位置，和右起始位置
-        int ls = left, rs = min + 1;
+        int ls = left, rs = mid + 1;
         int tempIndex = 0;
-        while (ls <= min && rs <= right) {
+        while (ls <= mid && rs <= right) {
             if (arr[ls] < arr[rs]) {
                 temp[tempIndex] = arr[ls];
                 ls++;
@@ -59,7 +59,7 @@ public class MergeSort {
             tempIndex++;
         }
 
-        while (ls <= min) {
+        while (ls <= mid) {
             temp[tempIndex] = arr[ls];
             ls++;
             tempIndex++;
