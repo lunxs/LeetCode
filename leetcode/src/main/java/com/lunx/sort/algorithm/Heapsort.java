@@ -82,7 +82,8 @@ public class Heapsort {
     }
 
     public static void heapifyMin(int[] arr, int i, int length) {
-        int minIndex = i;
+        // 递归实现 start
+        /*int minIndex = i;
 
         int leftNodeIndex = 2 * i + 1;
         int rightNodeIndex = 2 * i + 2;
@@ -97,7 +98,33 @@ public class Heapsort {
         if (minIndex != i) {
             swap(arr, i, minIndex);
             heapifyMin(arr, minIndex, length);
+        }*/
+        // 递归实现 end
+
+        // 迭代实现 start
+        while (i < length) {
+            // 假设当前索引为最小索引
+            int minIndex = i;
+            // 左孩子索引
+            int leftNodeIndex = 2 * minIndex + 1;
+            // 右孩子索引
+            int rightNodeIndex = 2 * minIndex + 2;
+
+            if (leftNodeIndex < length && arr[leftNodeIndex] < arr[minIndex]) {
+                minIndex = leftNodeIndex;
+            }
+            if (rightNodeIndex < length && arr[rightNodeIndex] < arr[minIndex]) {
+                minIndex = rightNodeIndex;
+            }
+
+            if (minIndex != i) {
+                swap(arr, i, minIndex);
+                i = minIndex;
+            } else {
+                break;
+            }
         }
+        // 迭代实现 end
     }
 
 
