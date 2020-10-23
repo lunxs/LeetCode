@@ -40,14 +40,14 @@ public class ReflectDemo {
         return bean;
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         ReflectDemo reflectDemo = new ReflectDemo();
 
         StringModel bean = new StringModel();
-        bean.setA("");
+        bean.setA("1");
         Object o = reflectDemo.setValue(bean);
 
         System.out.println(o);
 
-    }
+    }*/
 }

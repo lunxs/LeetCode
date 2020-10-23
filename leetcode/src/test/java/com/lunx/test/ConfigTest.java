@@ -19,6 +19,7 @@ public class ConfigTest extends LeetcodeApplicationTests {
 
     @Test
     public void test() {
+        System.out.println(environment.getProperty("spring.datasource.url"));
         System.out.println(environment);
 
 

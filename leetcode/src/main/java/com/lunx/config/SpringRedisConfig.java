@@ -15,7 +15,7 @@ import redis.clients.jedis.JedisPoolConfig;
  * @date 2019/09/25
  * @description
  */
-@Configuration
+//@Configuration
 public class SpringRedisConfig {
 
     @Bean

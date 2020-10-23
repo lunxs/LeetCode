@@ -5,6 +5,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -14,6 +16,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/hello")
 public class Hello {
+
+    @Autowired
+    private Environment environment;
 
     @ApiOperation(value = "hello接口", notes = "测试使用")
     @ApiImplicitParams({
@@ -25,6 +30,7 @@ public class Hello {
         boolean data = false;
         System.out.println("*********** start ***********");
 
+        System.out.println(environment.getProperty("spring.datasource.url"));
         System.out.println(first);
 
         System.out.println("*********** end ***********");
