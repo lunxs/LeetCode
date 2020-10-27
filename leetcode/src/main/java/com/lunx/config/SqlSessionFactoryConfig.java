@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
@@ -20,7 +19,6 @@ import javax.sql.DataSource;
  */
 @Configuration
 @MapperScan("com.lunx.dao.mapper")
-@EnableTransactionManagement
 public class SqlSessionFactoryConfig {
 
     @Bean(value = "sqlSessionFactory")
