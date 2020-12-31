@@ -2,6 +2,7 @@ package com.lunx.test;
 
 import com.lunx.dao.mapper.TestSecondMapper;
 import com.lunx.dao.model.TestSecond;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +17,7 @@ import javax.annotation.Resource;
  * @date 2020/10/27
  * @description
  */
+@Slf4j
 @Component
 public class TransactionTest {
 
@@ -66,6 +68,19 @@ public class TransactionTest {
                 System.out.println(testSecond1);
             }
         });
+    }
+
+
+    /**
+     * 测试事务中 mybatis，开启了几个session
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public void transaction2() {
+        TestSecond testSecond = testSecondMapper.selectByPrimaryKey(2);
+        log.info(testSecond.toString());
+
+        TestSecond testSecond1 = testSecondMapper.selectByPrimaryKey(2);
+        System.out.println(testSecond1);
     }
 
 }
