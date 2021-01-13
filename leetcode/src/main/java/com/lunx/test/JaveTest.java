@@ -1,15 +1,30 @@
 package com.lunx.test;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
 public class JaveTest {
 
     public static void main(String[] args) throws Exception {
-        Thread thread11 = new Thread(new Test11());
-        Thread thread12 = new Thread(new Test12());
+        List<String> str = new ArrayList<>();
 
-        thread11.start();
-        Thread.sleep(1000);
+        str.add("a");
+        str.add("b");
+        str.add("c");
+        str.add("d");
+        str.add("e");
+        str.add("f");
+        str.add("g");
+        str.add("h");
+        str.add("i");
+        str.add("j");
+        str.add("k");
 
-        thread12.start();
+        str.remove("a");
+
+
+
     }
 
 }
