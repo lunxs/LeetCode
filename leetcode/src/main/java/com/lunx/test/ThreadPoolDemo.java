@@ -92,8 +92,8 @@ public class ThreadPoolDemo {
         long startTime = System.currentTimeMillis();
 
         for (int i = 0; i < 10; i++) {
-            executorService.submit(() -> sum());
-//            executorService.execute(() -> System.out.println(1));
+//            executorService.submit(() -> sum());
+            executorService.execute(() -> System.out.println(1));
         }
 
 
@@ -104,7 +104,7 @@ public class ThreadPoolDemo {
     }
 
     public static void main(String[] args) {
-        try {
+        /*try {
             threadPool();
 
             System.out.println("first end");
@@ -123,7 +123,22 @@ public class ThreadPoolDemo {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+        }*/
+
+        executorService.execute(() -> exceptionTest());
+        Future<?> submit = executorService.submit(() -> exceptionTest());
+
+        try {
+            submit.get();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+    }
+
+    public static void exceptionTest() {
+        System.out.println("exception test");
+        throw new RuntimeException("exception test");
     }
 
     static class DefaultThreadFactory1 implements ThreadFactory {
