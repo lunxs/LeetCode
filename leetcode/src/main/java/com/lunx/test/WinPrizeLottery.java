@@ -1,5 +1,14 @@
 package com.lunx.test;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -11,6 +20,7 @@ import java.util.stream.Collectors;
  */
 public class WinPrizeLottery {
 
+    private static String HISTORY_URL = "https://api.jisuapi.com/caipiao/history?appkey=98179173437c7deb&caipiaoid=14&start=0&num=5";
     private static List<WinningNum> winningNumList = initWinningNum();
     private static List<UseNum> useNumList = initUseNum();
 
@@ -70,29 +80,17 @@ public class WinPrizeLottery {
             return num;
         }
     }
-
     /**
      * 初始化开奖号码
      */
     private static List<WinningNum> initWinningNum() {
-        String[] winningNums = {
-                "11,14,21,24,31;02,10",
-                "17,18,23,30,31;10,12",
-                "07,11,20,24,27;01,11",
-                "09,21,22,26,30;04,12",
-                "02,03,05,17,29;04,10",
-                "02,06,10,32,33;04,07",
-                "18,23,25,26,32;02,07",
-                "01,04,19,20,34;03,05",
-                "01,11,14,34,35;07,10",
-                "01,03,05,30,32;01,05",
-                "08,10,14,25,34;07,08",
-                "05,11,16,30,32;03,04",
-                "08,17,25,28,33;07,11",
-                "10,21,27,29,33;04,12",
-                "09,11,20,29,32;01,07",
-        };
-        List<WinningNum> winningNumList = Arrays.asList(winningNums)
+        // 开奖号码
+        List<String> winningNums = new ArrayList<>();
+
+        // 远端api获取，历史开奖号码
+        get(winningNums);
+
+        List<WinningNum> winningNumList = winningNums
                 .stream()
                 .map(WinningNum::new)
                 .collect(Collectors.toList());
@@ -106,13 +104,11 @@ public class WinPrizeLottery {
         List<UseNum> useNumList = new ArrayList<>();
         // 飞
         WinningNum[] fei = {
-                new WinningNum("01,09,11,15,26;03,12"),
-                new WinningNum("09,16,17,21,28;04,09")
+                new WinningNum("01,09,11,15,26;03,12")
         };
         useNumList.add(new UseNum("飞", fei));
         // 川
         WinningNum[] chuan = {
-                new WinningNum("01,09,11,15,26;03,12"),
                 new WinningNum("09,16,17,21,28;04,09")
         };
         useNumList.add(new UseNum("川", chuan));
@@ -131,6 +127,12 @@ public class WinPrizeLottery {
                 new WinningNum("03,10,14,25,28;03,10")
         };
         useNumList.add(new UseNum("强", qiang));
+        // 钻
+        WinningNum[] zuan = {
+                new WinningNum("01,05,19,20,26;02,12")
+        };
+        useNumList.add(new UseNum("钻", zuan));
+
 
         return useNumList;
     }
@@ -140,6 +142,9 @@ public class WinPrizeLottery {
         useNumList.stream().forEach(use -> result.putAll(calcUseWin(use)));
 
         System.out.println(result);
+
+//        get(new ArrayList<>());
+
     }
 
     private static Map<String, Integer> calcUseWin(UseNum useNum) {
@@ -191,6 +196,90 @@ public class WinPrizeLottery {
             if (winBlue == 2) return 10_000_000;
         }
         return 0;
+    }
+
+
+    public static void get(List<String> winningNums) {
+        String result = null;
+
+        try {
+            Gson gson = new Gson();
+            result = sendGet();
+            JsonObject json = gson.fromJson(result, JsonObject.class);
+
+            if (json.get("status").getAsInt() != 0) {
+                System.out.println(json.get("msg").getAsString());
+            } else {
+                JsonObject resultarr = json.getAsJsonObject("result");
+                String caipiaoid = resultarr.get("caipiaoid").getAsString();
+                System.out.println("彩票类型：" + caipiaoid);
+                JsonArray list = resultarr.getAsJsonArray("list");
+                if (list != null) {
+                    for (int j = 0; j < list.size(); j++) {
+                        JsonObject list_ = (JsonObject) list.get(j);
+                        String opendate = list_.get("opendate").getAsString();
+                        String issueno = list_.get("issueno").getAsString();
+                        String number = list_.get("number").getAsString();
+                        String refernumber = list_.get("refernumber").getAsString();
+
+                        winningNums.add(number.replaceAll(" ", ",") + ";" +
+                                refernumber.replaceAll(" ", ","));
+
+                        String saleamount = list_.get("saleamount").getAsString();
+                        System.out.println(opendate + " " + issueno + " " + number + " " + refernumber);
+                        /*JsonArray prize = list_.getAsJsonArray("prize");
+                        if (list_.get("prize") != null) {
+                            for (int i = 0; i < prize.size(); i++) {
+                                JsonObject obj = (JsonObject) prize.get(i);
+                                String prizename = obj.get("prizename").getAsString();
+                                String require = obj.get("require").getAsString();
+                                String num = obj.get("num").getAsString();
+                                String singlebonus = obj.get("singlebonus").getAsString();
+                                System.out.println(prizename + " " + require + " " + num + " " + singlebonus);
+                            }
+                        }*/
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String sendGet() {
+        StringBuffer resultBuffer = null;
+
+        HttpURLConnection con = null;
+        BufferedReader br = null;
+        try {
+            URL url = new URL(HISTORY_URL);
+            con = (HttpURLConnection) url.openConnection();
+            con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            con.connect();
+            resultBuffer = new StringBuffer();
+            br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+            String temp;
+            while ((temp = br.readLine()) != null) {
+                resultBuffer.append(temp);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    br = null;
+                    throw new RuntimeException(e);
+                } finally {
+                    if (con != null) {
+                        con.disconnect();
+                        con = null;
+                    }
+                }
+            }
+        }
+        return resultBuffer.toString();
     }
 
 }
