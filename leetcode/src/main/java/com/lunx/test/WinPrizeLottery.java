@@ -20,7 +20,8 @@ import java.util.stream.Collectors;
  */
 public class WinPrizeLottery {
 
-    private static String HISTORY_URL = "https://api.jisuapi.com/caipiao/history?appkey=98179173437c7deb&caipiaoid=14&start=0&num=5";
+    public static final int ISSUENO_START = 21063;
+    private static String HISTORY_URL = "https://api.jisuapi.com/caipiao/history?appkey=98179173437c7deb&caipiaoid=14&start=0&num=15";
     private static List<WinningNum> winningNumList = initWinningNum();
     private static List<UseNum> useNumList = initUseNum();
 
@@ -227,6 +228,12 @@ public class WinPrizeLottery {
 
                         String saleamount = list_.get("saleamount").getAsString();
                         System.out.println(opendate + " " + issueno + " " + number + " " + refernumber);
+
+                        // TODO
+                        if (Integer.parseInt(issueno) <= ISSUENO_START) {
+                            return;
+                        }
+
                         /*JsonArray prize = list_.getAsJsonArray("prize");
                         if (list_.get("prize") != null) {
                             for (int i = 0; i < prize.size(); i++) {
