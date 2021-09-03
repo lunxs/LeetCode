@@ -1,10 +1,8 @@
 package com.lunx.config;
 
-import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.DefaultResponseErrorHandler;
@@ -17,10 +15,8 @@ import java.io.IOException;
  * @version 1.0
  * @date 2020/06/09
  * @description
- * @ 汇付天下
  */
-@Data
-@Configuration
+//@Configuration
 public class RestTemplateConfig {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());

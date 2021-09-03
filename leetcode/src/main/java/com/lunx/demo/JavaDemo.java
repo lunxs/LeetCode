@@ -136,10 +136,26 @@ public class JavaDemo {
         String[] split = a.split(",");
     }
 
+    private static void test14(List<Play> playList) {
+        Play play1 = playList.stream().filter(play -> "-1".equals(play.getId()))
+                .reduce((a, b) -> {
+                    a.setAge(a.getAge() + b.getAge());
+                    return a;
+                }).orElse(null);
+        System.out.println(play1);
+    }
+
+    private static void test15() {
+        String a = "200";
+        Integer b = 200;
+
+        System.out.println(a.equals(b));
+    }
+
     public static void main(String[] args) {
         List<Play> init = init();
 
-        test13();
+        test15();
 
     }
 

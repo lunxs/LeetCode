@@ -1,39 +1,27 @@
 package com.lunx.test;
 
-import java.math.BigDecimal;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class JaveTest {
 
-    public static void main(String[] args) throws Exception {
-        test();
+    public static void main(String[] args) {
+        List<String> aList = new ArrayList<>();
+        aList.add("1");
+        System.out.println(new Gson().toJson(aList));
+
+        aList.forEach(a -> System.out.print(a + ","));
+        System.out.println("*******");
+
+        aList.clear();
+
+        aList.add("2");
+        aList.add("3");
+        aList.forEach(a -> System.out.print(a + ","));
+        System.out.println(new Gson().toJson(aList));
     }
-
-
-    public static void test() {
-        retry:
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                System.out.println("i:" + i + ",j:" + j);
-                if (i == 2) {
-                    break retry;
-                }
-
-                /*if (j == 3) {
-                    continue retry;
-                }*/
-
-                if (j == 5) {
-                    continue;
-                }
-                System.out.println("continue");
-
-                if (j == 6) {
-                    break;
-                }
-            }
-        }
-    }
-
 }
