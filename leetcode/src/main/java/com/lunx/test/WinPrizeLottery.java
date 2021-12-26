@@ -16,12 +16,13 @@ import java.util.stream.Collectors;
  * @author lunx
  * @version 1.0
  * @date 2021/04/08
- * @description
+ * @description 每期需要修改输入点, ISSUENO_START 起始期数, 购买彩票号码
+ *
  */
 public class WinPrizeLottery {
 
-    public static final int ISSUENO_START = 21093;
-    private static String HISTORY_URL = "https://api.jisuapi.com/caipiao/history?appkey=98179173437c7deb&caipiaoid=14&start=0&num=15";
+    public static final int ISSUENO_START = 21142;
+    private static String HISTORY_URL = "https://api.jisuapi.com/caipiao/history?appkey=98179173437c7deb&caipiaoid=14&start=0&num=20";
     private static List<WinningNum> winningNumList = initWinningNum();
     private static List<UseNum> useNumList = initUseNum();
 
@@ -223,15 +224,15 @@ public class WinPrizeLottery {
                         String number = list_.get("number").getAsString();
                         String refernumber = list_.get("refernumber").getAsString();
 
-                        winningNums.add(number.replaceAll(" ", ",") + ";" +
-                                refernumber.replaceAll(" ", ","));
-
-                        String saleamount = list_.get("saleamount").getAsString();
-                        System.out.println(opendate + " " + issueno + " " + number + " " + refernumber);
-
                         // TODO
-                        if (Integer.parseInt(issueno) <= ISSUENO_START) {
-                            return;
+                        if (ISSUENO_START <= Integer.parseInt(issueno) &&
+                                Integer.parseInt(issueno) < ISSUENO_START + 15) {
+
+                            winningNums.add(number.replaceAll(" ", ",") + ";" +
+                                    refernumber.replaceAll(" ", ","));
+
+                            String saleamount = list_.get("saleamount").getAsString();
+                            System.out.println(opendate + " " + issueno + " " + number + " " + refernumber);
                         }
 
                         /*JsonArray prize = list_.getAsJsonArray("prize");
