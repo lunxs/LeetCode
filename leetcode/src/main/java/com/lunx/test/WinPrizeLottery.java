@@ -225,8 +225,7 @@ public class WinPrizeLottery {
                         String refernumber = list_.get("refernumber").getAsString();
 
                         // TODO
-                        if (ISSUENO_START <= Integer.parseInt(issueno) &&
-                                Integer.parseInt(issueno) < ISSUENO_START + 15) {
+                        if (ISSUENO_START <= Integer.parseInt(issueno) && winningNums.size() < 15) {
 
                             winningNums.add(number.replaceAll(" ", ",") + ";" +
                                     refernumber.replaceAll(" ", ","));
