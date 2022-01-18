@@ -5,12 +5,12 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class JaveTest {
 
     public static void main(String[] args) {
-        String a = "sadjohgerngk.honagla";
-        String[] split = a.split(".");
+        System.out.println(UUID.randomUUID().toString().replaceAll("-", ""));
     }
 }

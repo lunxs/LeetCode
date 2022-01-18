@@ -217,7 +217,7 @@ public class WinPrizeLottery {
                 System.out.println("彩票类型：" + caipiaoid);
                 JsonArray list = resultarr.getAsJsonArray("list");
                 if (list != null) {
-                    for (int j = 0; j < list.size(); j++) {
+                    for (int j = list.size() - 1; j >= 0; j--) {
                         JsonObject list_ = (JsonObject) list.get(j);
                         String opendate = list_.get("opendate").getAsString();
                         String issueno = list_.get("issueno").getAsString();
