@@ -134,7 +134,7 @@ public class WinPrizeLottery {
                 new WinningNum("01,05,19,20,26;02,12")
         };
         useNumList.add(new UseNum("钻", zuan));
-        // 小飞媳妇
+        // 雪
         WinningNum[] xue = {
                 new WinningNum("09,17,18,29,31;08,09")
         };
