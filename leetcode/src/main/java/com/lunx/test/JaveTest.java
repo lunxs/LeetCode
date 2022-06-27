@@ -1,16 +1,30 @@
 package com.lunx.test;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
-
 public class JaveTest {
 
-    public static void main(String[] args) {
-        System.out.println(UUID.randomUUID().toString().replaceAll("-", ""));
+    private static int getaaa(int i) {
+        if (1 == i) {
+            throw new RuntimeException("runtime");
+        }
+
+        return i << 1;
     }
+
+    private static int retry(int i) {
+        try {
+            return getaaa(i);
+        } catch (Exception e) {
+            System.out.println("try again");
+        }
+
+        return retry(++i);
+    }
+
+
+    public static void main(String[] args) {
+        String a = null;
+        String b = "1";
+        System.out.println(a.equals(b));
+    }
+
 }

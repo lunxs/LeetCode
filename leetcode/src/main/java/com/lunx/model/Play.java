@@ -10,6 +10,8 @@ import java.util.List;
  * @date 2018/11/06
  */
 public class Play {
+
+    private final String a = xx();
     private int id;
 
     private String name;
@@ -21,6 +23,11 @@ public class Play {
     private boolean flag;
 
     private List<Integer> phones;
+
+    private String xx() {
+        System.out.println("init a");
+        return "x";
+    }
 
     public int getWeight() {
         return weight;

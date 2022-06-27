@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class ThreadPoolDemo {
 
-    private static ExecutorService executorService = new ThreadPoolExecutor(5, 5,
+    private static ExecutorService executorService = new ThreadPoolExecutor(2, 2,
             0L, TimeUnit.MILLISECONDS,
             new LinkedBlockingQueue<>(), new DefaultThreadFactory1());
 //    private static ExecutorService executorService = Executors.newFixedThreadPool(5);
@@ -104,36 +104,23 @@ public class ThreadPoolDemo {
     }
 
     public static void main(String[] args) {
-        /*try {
-            threadPool();
 
-            System.out.println("first end");
-            Thread.sleep(10000L);
-            System.out.println("second start");
+        for (int i = 0; i < 100; i++) {
+            executorService.execute(() -> {
+                ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
+                testPut(map);
+            });
 
-            threadPool();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
 
+    }
 
-        try {
-            System.out.println("***************");
-//            threadSingle();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-        }*/
-
-        executorService.execute(() -> exceptionTest());
-        Future<?> submit = executorService.submit(() -> exceptionTest());
-
-        try {
-            submit.get();
-        } catch (Exception e) {
-            e.printStackTrace();
+    public static void testPut(ConcurrentHashMap<String, Integer> map) {
+        if (map.putIfAbsent("a", 1) != null) {
+            map.computeIfPresent("a", (k, v) -> 2);
         }
 
+        System.out.println(map.get("a"));
     }
 
     public static void exceptionTest() {

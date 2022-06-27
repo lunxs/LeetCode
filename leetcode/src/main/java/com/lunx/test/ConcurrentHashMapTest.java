@@ -1,7 +1,6 @@
 package com.lunx.test;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.*;
 
 /**
  * @author lunx
@@ -11,14 +10,41 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ConcurrentHashMapTest {
 
-    public static void main(String[] args) {
-        Map<String, String> cmap = new ConcurrentHashMap<>();
+    private static ExecutorService es = new ThreadPoolExecutor(10, 10, 3000L,
+            TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
 
 
-        String put = cmap.put("a", "b");
-        System.out.println(put);
+    private void add(ConcurrentHashMap<String, Integer> map) {
+//        map.computeIfAbsent("aa", k -> 180);
 
-        String put1 = cmap.put("a", "c");
-        System.out.println(put1);
+//        map.computeIfPresent("aa", (k, v) -> v + 1);
+
+//        map.compute("aa", (k, v) -> (v == null ? 0 : v) + 1);
+
+//        map.put("a", 2);
+        System.out.println(map.get("a"));
+
+
+        Integer a = map.putIfAbsent("a", 3);
+        System.out.println(map.get("a"));
+        System.out.println("a=" + a);
     }
+
+    public static void main(String[] args) {
+        ConcurrentHashMapTest test = new ConcurrentHashMapTest();
+
+        ConcurrentHashMap<String, Integer> concurrentHashMap = new ConcurrentHashMap();
+
+//        for (int i = 0; i < 100; i++) {
+//            es.execute(() -> {
+//                test.add(concurrentHashMap);
+//            });
+//        }
+
+        Integer a = concurrentHashMap.computeIfAbsent("a", value -> 3);
+        System.out.println("a=" + a + ",get=" + concurrentHashMap.get("a"));
+
+    }
+
+
 }

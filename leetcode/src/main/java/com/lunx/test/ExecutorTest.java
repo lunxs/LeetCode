@@ -44,7 +44,7 @@ public class ExecutorTest {
 
     public static void main(String[] args) {
         ExecutorTest executorTest = new ExecutorTest();
-//        executorTest.test();
+        executorTest.test();
 
 
         while (true) {
