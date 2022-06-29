@@ -19,7 +19,7 @@ public class ConcurrentHashMapTest {
 
 //        map.computeIfPresent("aa", (k, v) -> v + 1);
 
-//        map.compute("aa", (k, v) -> (v == null ? 0 : v) + 1);
+        map.compute("aa", (k, v) -> (v == null ? 0 : v) + 1);
 
 //        map.put("a", 2);
         System.out.println(map.get("a"));
@@ -31,18 +31,14 @@ public class ConcurrentHashMapTest {
     }
 
     public static void main(String[] args) {
-        ConcurrentHashMapTest test = new ConcurrentHashMapTest();
 
         ConcurrentHashMap<String, Integer> concurrentHashMap = new ConcurrentHashMap();
 
-//        for (int i = 0; i < 100; i++) {
-//            es.execute(() -> {
-//                test.add(concurrentHashMap);
-//            });
-//        }
+        concurrentHashMap.put("a", 1);
 
-        Integer a = concurrentHashMap.computeIfAbsent("a", value -> 3);
-        System.out.println("a=" + a + ",get=" + concurrentHashMap.get("a"));
+        concurrentHashMap.compute("a", (k, v) -> v == null ? 0 : v + 1);
+
+        System.out.println(concurrentHashMap);
 
     }
 
