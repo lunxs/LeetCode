@@ -63,6 +63,11 @@ public class WinPrizeLottery {
                     .collect(Collectors.toList());
             return blueNumList;
         }
+
+        @Override
+        public String toString() {
+            return num;
+        }
     }
 
     static class UseNum{
@@ -80,6 +85,11 @@ public class WinPrizeLottery {
 
         public List<WinningNum> getNum() {
             return num;
+        }
+
+        @Override
+        public String toString() {
+            return name + ":" + num;
         }
     }
     /**
@@ -140,7 +150,6 @@ public class WinPrizeLottery {
         };
         useNumList.add(new UseNum("雪", xue));
 
-
         return useNumList;
     }
 
@@ -148,9 +157,8 @@ public class WinPrizeLottery {
         Map<String, Integer> result = new HashMap<>();
         useNumList.stream().forEach(use -> result.putAll(calcUseWin(use)));
 
+        useNumList.forEach(use -> System.out.println(use));
         System.out.println(result);
-
-//        get(new ArrayList<>());
 
     }
 
