@@ -1,30 +1,24 @@
 package com.lunx.java.test;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import org.springframework.beans.BeanUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
 public class JaveTest {
 
-    private static int getaaa(int i) {
-        if (1 == i) {
-            throw new RuntimeException("runtime");
-        }
-
-        return i << 1;
-    }
-
-    private static int retry(int i) {
-        try {
-            return getaaa(i);
-        } catch (Exception e) {
-            System.out.println("try again");
-        }
-
-        return retry(++i);
-    }
-
-
     public static void main(String[] args) {
-        String a = null;
-        String b = "1";
-        System.out.println(a.equals(b));
+        String str = "soyfai";
+        String b = null;
+
+        System.out.println(str.contains(b));
+
+
     }
 
 }

@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  */
 public class WinPrizeLottery {
 
-    public static final int ISSUENO_START = 22081;
+    public static final int ISSUENO_START = 22097;
     private static String HISTORY_URL = "https://api.jisuapi.com/caipiao/history?appkey=98179173437c7deb&caipiaoid=14&start=0&num=20";
     private static List<WinningNum> winningNumList = initWinningNum();
     private static List<UseNum> useNumList = initUseNum();
@@ -131,6 +131,8 @@ public class WinPrizeLottery {
 //        useNumList.add(new UseNum("波", bo));
         // 松
         WinningNum[] song = {
+//                new WinningNum("14,21,24,27,32;5,11"),
+//                new WinningNum("9,19,22,23,25;5,6"),
                 new WinningNum("04,12,20,21,32;04,11")
         };
         useNumList.add(new UseNum("松", song));
