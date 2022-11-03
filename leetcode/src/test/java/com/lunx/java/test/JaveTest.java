@@ -9,16 +9,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class JaveTest {
 
     public static void main(String[] args) {
-        String str = "soyfai";
-        String b = null;
+        List<String> as = new ArrayList<>();
 
-        System.out.println(str.contains(b));
+        String collect = as.stream().collect(Collectors.joining(","));
+
+        System.out.println(collect);
 
 
+        String a = "";
+        System.out.println(a);
     }
 
 }

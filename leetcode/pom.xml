@@ -177,17 +177,6 @@
                 </dependencies>
             </plugin>
 
-            <plugin>
-                <groupId>com.huifu.bspay.sdk</groupId>
-                <artifactId>opps-bspay-java-sdk</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
