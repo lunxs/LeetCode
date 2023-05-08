@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  */
 public class WinPrizeLottery {
 
-    public static final int ISSUENO_START = 22097;
+    public static final int ISSUENO_START = 23027;
     private static String HISTORY_URL = "https://api.jisuapi.com/caipiao/history?appkey=98179173437c7deb&caipiaoid=14&start=0&num=20";
     private static List<WinningNum> winningNumList = initWinningNum();
     private static List<UseNum> useNumList = initUseNum();
