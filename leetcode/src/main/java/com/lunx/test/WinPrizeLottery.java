@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
  */
 public class WinPrizeLottery {
 
-    public static final int ISSUENO_START = 23027;
-    private static String HISTORY_URL = "https://api.jisuapi.com/caipiao/history?appkey=98179173437c7deb&caipiaoid=14&start=0&num=20";
+    public static final int ISSUENO_START = 23083;
+    private static String HISTORY_URL = "https://api.jisuapi.com/caipiao/history?appkey=98179173437c7deb&caipiaoid=14&start=0&num=25";
     private static List<WinningNum> winningNumList = initWinningNum();
     private static List<UseNum> useNumList = initUseNum();
 
@@ -148,7 +148,7 @@ public class WinPrizeLottery {
         useNumList.add(new UseNum("钻", zuan));
         // 雪
         WinningNum[] xue = {
-                new WinningNum("09,17,18,29,31;08,09")
+                new WinningNum("09,12,19,31,34;01,08")
         };
         useNumList.add(new UseNum("雪", xue));
 
@@ -229,8 +229,9 @@ public class WinPrizeLottery {
             } else {
                 JsonObject resultarr = json.getAsJsonObject("result");
                 String caipiaoid = resultarr.get("caipiaoid").getAsString();
-                System.out.println("彩票类型：" + caipiaoid);
                 JsonArray list = resultarr.getAsJsonArray("list");
+                System.out.println("all:"+ list);
+                System.out.println("彩票类型：" + caipiaoid);
                 if (list != null) {
                     for (int j = list.size() - 1; j >= 0; j--) {
                         JsonObject list_ = (JsonObject) list.get(j);
@@ -240,7 +241,7 @@ public class WinPrizeLottery {
                         String refernumber = list_.get("refernumber").getAsString();
 
                         // TODO
-                        if (ISSUENO_START <= Integer.parseInt(issueno) && winningNums.size() < 15) {
+                        if (ISSUENO_START <= Integer.parseInt(issueno) && winningNums.size() <= 20) {
 
                             winningNums.add(number.replaceAll(" ", ",") + ";" +
                                     refernumber.replaceAll(" ", ","));
