@@ -126,14 +126,14 @@ public class WinPrizeLottery {
         useNumList.add(new UseNum("川", chuan));
         // 波
         WinningNum[] bo = {
-                new WinningNum("04,07,09,16,25;08,12")
+                new WinningNum("08,09,17,22,30;02,11")
         };
-//        useNumList.add(new UseNum("波", bo));
+        useNumList.add(new UseNum("波", bo));
         // 松
         WinningNum[] song = {
 //                new WinningNum("14,21,24,27,32;5,11"),
 //                new WinningNum("9,19,22,23,25;5,6"),
-                new WinningNum("04,12,20,21,32;04,11")
+                new WinningNum("04,12,20,21,32;07,09")
         };
         useNumList.add(new UseNum("松", song));
         // 强
@@ -143,7 +143,7 @@ public class WinPrizeLottery {
         useNumList.add(new UseNum("强", qiang));
         // 钻
         WinningNum[] zuan = {
-                new WinningNum("01,05,19,20,26;02,12")
+                new WinningNum("01,04,09,13,20;06,10")
         };
         useNumList.add(new UseNum("钻", zuan));
         // 雪
